@@ -34,6 +34,8 @@ const registerUser = async (req, res, next) => {
           .cookie("access_token", accessToken, {
             httpOnley: true,
             maxAge: 86400000 * 7, // 7 days in milliseconds
+            sameSite: "strict",
+            secure: process.env.NODE_ENV === "production",
           })
           .json({ status: "OK", userData: rest });
       }
@@ -60,6 +62,8 @@ const logInUser = async (req, res, next) => {
           .cookie("access_token", accessToken, {
             httpOnley: true,
             maxAge: 86400000 * 7, // 7 days in milliseconds
+            sameSite: "strict",
+            secure: process.env.NODE_ENV === "production",
           })
           .json({ status: "OK", userData: rest });
       } else {
@@ -73,14 +77,25 @@ const logInUser = async (req, res, next) => {
   }
 };
 
-const logOutUser = (req, res, next) => {
+const logOutUser = async (req, res, next) => {
   if (req.user) {
-    return res
-      .clearCookie("access_token", {
-        httpOnley: true,
-      })
-      .status(200)
-      .json({ status: "OK", message: "Logged Out Successfully" });
+    try {
+      const isExist = await User.findById(req.user._id);
+      if (!isExist) {
+        return res
+          .status(404)
+          .json({ status: "Error", message: "User Doesn't Exist" });
+      } else {
+        return res
+          .clearCookie("access_token", {
+            httpOnley: true,
+          })
+          .status(200)
+          .json({ status: "OK", message: "Logged Out Successfully" });
+      }
+    } catch (error) {
+      return res.status(500).json({ status: "Error", message: error.message });
+    }
   } else {
     return res.status(403).json({
       status: "Error",
@@ -91,11 +106,22 @@ const logOutUser = (req, res, next) => {
 
 const checkAuth = async (req, res, next) => {
   if (req.user) {
-    const { password, ...rest } = req.user;
-    return res.status(200).json({ status: "OK", userData: rest });
+    try {
+      const isExist = await User.findById(req.user._id);
+      if (!isExist) {
+        return res
+          .status(404)
+          .json({ status: "Error", message: "User Doesn't Exist" });
+      } else {
+        const { password, ...rest } = req.user;
+        return res.status(200).json({ status: "OK", userData: rest });
+      }
+    } catch (error) {
+      return res.status(500).json({ status: "Error", message: error.message });
+    }
   } else {
     return res
-      .status(403)
+      .status(401)
       .json({ status: "Error", message: "Something Went Wrong :(" });
   }
 };
