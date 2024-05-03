@@ -3,7 +3,7 @@ import bcryptjs from "bcryptjs";
 import { createToken } from "../utils/createToken.js";
 
 const registerUser = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, fullName, gender } = req.body;
   try {
     const user = await User.findOne({ email });
     if (user) {
@@ -14,8 +14,13 @@ const registerUser = async (req, res, next) => {
       const hashedPassword = bcryptjs.hashSync(password, 10);
       const newUser = await User.create({
         username,
+        fullName,
+        profileImg: `https://avatar.iran.liara.run/public/${
+          gender === "Male" ? "boy" : "girl"
+        }?username=${username.trim().toLowerCase()}`,
         email,
         password: hashedPassword,
+        gender,
       });
       if (!newUser) {
         return res

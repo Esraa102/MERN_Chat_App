@@ -29,5 +29,7 @@ export const loginValidation = [
 
 export const registerValidation = [
   body("username").notEmpty().withMessage("Username is Required"),
+  body("fullName").notEmpty().withMessage("Full Name is Required"),
+  body("gender").notEmpty().withMessage("Gender is Required"),
   ...loginValidation,
 ];

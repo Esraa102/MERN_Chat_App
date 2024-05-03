@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
+  fullName: {
+    type: String,
+    required: true,
+  },
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   email: {
     type: String,
@@ -14,6 +19,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  profileImg: {
+    type: String,
+    default: "",
+  },
+  gender: {
+    type: String,
+    required: true,
+    enum: ["Male", "Female"],
+  },
 });
 
-export const User = mongoose.model("users", userSchema);
+export const User = mongoose.model("User", userSchema);
