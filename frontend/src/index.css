@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("/assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+@layer components {
+  .auth-page {
+    @apply p-4 rounded-md bg-gray-500 bg-clip-padding bg-opacity-0 backdrop-filter backdrop-blur-lg
+    hover:bg-opacity-5 transition w-full md:w-1/2  mx-auto flex  flex-col gap-4;
+  }
+  .form {
+    @apply flex flex-col gap-2 mt-2;
+  }
+  .field-container {
+    @apply flex flex-col gap-1;
+  }
+  .label {
+    @apply text-white -mb-1 font-semibold my-0;
+  }
+  .error {
+    @apply text-sm font-semibold  px-1 text-red-700;
+  }
+  .form-input {
+    @apply input h-[40px] placeholder:text-gray-400 bg-gray-800 bg-opacity-[0.10] rounded-md  ring-0 focus:outline-none focus:border-bright-brown border focus:border-2 border-gray-200 text-white;
+  }
+  .error-input {
+    @apply border-red-700 focus:border-red-700 ring-1 ring-red-700;
+  }
+}
