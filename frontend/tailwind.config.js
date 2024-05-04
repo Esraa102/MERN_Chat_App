@@ -5,8 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        blue: "#031448",
-        sky: "#4598B6",
+        pink: "#C327B4",
       },
     },
   },

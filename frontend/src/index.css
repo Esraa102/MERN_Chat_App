@@ -4,15 +4,15 @@
 
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("/assets/bg.jpg");
+    url("/assets/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 @layer components {
-  .auth-page {
-    @apply p-4 rounded-md bg-gray-500 bg-clip-padding bg-opacity-0 backdrop-filter backdrop-blur-md
-    hover:bg-opacity-5 transition w-full md:w-1/2  mx-auto flex  flex-col gap-4;
+  .page {
+    @apply p-4 rounded-md  bg-white  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-0 
+    hover:bg-opacity-[0.03]  w-full md:w-1/2  mx-auto flex  flex-col gap-4;
   }
   .form {
     @apply flex flex-col gap-2 mt-2;
@@ -27,12 +27,13 @@ body {
     @apply text-sm font-semibold  px-1 text-red-700;
   }
   .form-input {
-    @apply input h-[40px] placeholder:text-gray-400 bg-gray-800 bg-opacity-[0.10] rounded-md  ring-0 focus:outline-none focus:border-sky border focus:border-2 border-gray-300 text-white;
+    @apply input h-[40px] placeholder:text-gray-600 bg-gray-800 bg-opacity-[0.10] rounded-md  ring-0 focus:outline-none focus:border-pink border 
+    focus:border-2 border-gray-400 text-white;
   }
   .error-input {
     @apply border-red-700 focus:border-red-700 ring-1 ring-red-700;
   }
   .main-btn {
-    @apply btn block mt-6 bg-sky hover:bg-sky/60 font-semibold border-sky hover:border-sky/60  text-lg text-black;
+    @apply btn mt-6 bg-pink hover:bg-pink/80 font-semibold border-pink hover:border-pink/60  text-lg text-white;
   }
 }

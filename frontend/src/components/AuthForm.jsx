@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 // eslint-disable-next-line react/prop-types
 const AuthForm = ({ isRegister }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -123,11 +124,15 @@ const AuthForm = ({ isRegister }) => {
             })}
           />
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2"
+            className="absolute hover:text-pink transition right-4 top-1/2 -translate-y-1/2"
             type="button"
             onClick={() => setIsVisible((prev) => !prev)}
           >
-            {isVisible ? "Hide" : "Show"}
+            {isVisible ? (
+              <FaEye size={22} className="text-pink" />
+            ) : (
+              <FaEyeSlash size={22} />
+            )}
           </button>
         </div>
         {errors.password && <p className="error">{errors.password.message}</p>}
