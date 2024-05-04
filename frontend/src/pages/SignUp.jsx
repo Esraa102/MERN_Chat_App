@@ -6,7 +6,7 @@ const SignUp = () => {
       <h1 className="text-2xl md:text-3xl text-center text-white font-bold mb-4">
         Sign Up
       </h1>
-      <p className="-mt-6 text-gray-400 text-center font-semibold text-[16px]">
+      <p className="-mt-6 text-gray-400 text-center  text-[16px]">
         Welcome! Please enter your details to create a new account :)
       </p>
       <AuthForm isRegister />
@@ -14,7 +14,7 @@ const SignUp = () => {
         Already have an account??{" "}
         <Link
           to={"/sign-in"}
-          className="font-semibold  text-white hover:underline hover:text-bright-brown transition"
+          className="font-semibold  text-white hover:underline hover:text-sky transition"
         >
           Log in
         </Link>

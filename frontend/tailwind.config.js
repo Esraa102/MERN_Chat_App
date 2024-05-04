@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        brown: "#2B222A",
-        "bright-brown": "#C2927E",
+        blue: "#031448",
+        sky: "#4598B6",
       },
     },
   },

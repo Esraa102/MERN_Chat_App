@@ -4,9 +4,9 @@ const SignIn = () => {
   return (
     <div className="auth-page">
       <h1 className="text-2xl md:text-3xl text-center text-white font-bold mb-4">
-        LogIn
+        Log In
       </h1>
-      <p className="-mt-6 text-gray-400 text-center font-semibold text-[16px]">
+      <p className="-mt-6 text-gray-400 text-center  text-[16px]">
         Welcome back! Please enter your account details to log in
       </p>
       <AuthForm isRegister={false} />
@@ -14,7 +14,7 @@ const SignIn = () => {
         Don&apos;t have an account??{" "}
         <Link
           to={"/sign-up"}
-          className="font-semibold  text-white hover:underline hover:text-bright-brown transition"
+          className="font-semibold  text-white hover:underline hover:text-sky transition"
         >
           Create One!
         </Link>

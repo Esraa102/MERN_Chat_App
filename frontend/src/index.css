@@ -11,7 +11,7 @@ body {
 }
 @layer components {
   .auth-page {
-    @apply p-4 rounded-md bg-gray-500 bg-clip-padding bg-opacity-0 backdrop-filter backdrop-blur-lg
+    @apply p-4 rounded-md bg-gray-500 bg-clip-padding bg-opacity-0 backdrop-filter backdrop-blur-md
     hover:bg-opacity-5 transition w-full md:w-1/2  mx-auto flex  flex-col gap-4;
   }
   .form {
@@ -27,9 +27,12 @@ body {
     @apply text-sm font-semibold  px-1 text-red-700;
   }
   .form-input {
-    @apply input h-[40px] placeholder:text-gray-400 bg-gray-800 bg-opacity-[0.10] rounded-md  ring-0 focus:outline-none focus:border-bright-brown border focus:border-2 border-gray-200 text-white;
+    @apply input h-[40px] placeholder:text-gray-400 bg-gray-800 bg-opacity-[0.10] rounded-md  ring-0 focus:outline-none focus:border-sky border focus:border-2 border-gray-300 text-white;
   }
   .error-input {
     @apply border-red-700 focus:border-red-700 ring-1 ring-red-700;
+  }
+  .main-btn {
+    @apply btn block mt-6 bg-sky hover:bg-sky/60 font-semibold border-sky hover:border-sky/60  text-lg text-black;
   }
 }
