@@ -2,10 +2,7 @@ import { IoSend } from "react-icons/io5";
 
 const SendMessage = () => {
   return (
-    <form
-      className="border z-10 border-pink py-2 px-3 flex gap-2 fixed 
-    bottom-4 w-[90%] bg-gray-400/20 md:w-[60%] left-1/2 -translate-x-[28%] rounded-md backdrop-blur-md"
-    >
+    <form className="border-pink border-2 py-2 px-3 flex gap-2 w-[90%] mx-auto rounded-md backdrop-blur-md">
       <input
         type="text"
         name="mess"

@@ -2,7 +2,7 @@ import { IoSearch } from "react-icons/io5";
 
 const Search = () => {
   return (
-    <form className="flex w-full bg-gray-400/10 gap-3 px-3 py-2 border border-pink rounded-md">
+    <form className="flex lg:w-full bg-gray-400/10 gap-3 px-3 py-2 border border-pink rounded-md">
       <input
         type="search"
         name="search"
