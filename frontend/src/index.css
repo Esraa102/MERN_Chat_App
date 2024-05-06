@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-background {
+body {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("/assets/bg.png");
   background-repeat: no-repeat;
@@ -37,7 +37,49 @@
     @apply border-red-700 focus:border-red-700 ring-1 ring-red-700;
   }
   .main-btn {
-    @apply btn mt-6 bg-pink hover:bg-pink/80 font-semibold border-pink hover:border-pink/60  text-lg text-white;
+    @apply btn  mt-6 bg-pink hover:bg-pink/80 font-semibold border-pink hover:border-pink/60  text-lg text-white !important;
+  }
+  .main-btn:disabled {
+    @apply bg-opacity-50  border-opacity-50  cursor-not-allowed bg-pink !important;
+  }
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 60px;
+  aspect-ratio: 2;
+  --_g: no-repeat radial-gradient(circle closest-side, #c327b4 90%, #0000);
+  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 50%;
+  -webkit-animation: l3 1s infinite linear;
+  animation: l3 1s infinite linear;
+}
+@-webkit-keyframes l3 {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
+}
+@keyframes l3 {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
   }
 }
 

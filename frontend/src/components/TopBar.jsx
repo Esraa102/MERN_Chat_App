@@ -5,8 +5,10 @@ import { IoCloseCircleSharp } from "react-icons/io5";
 
 import Search from "./Search";
 import { useState } from "react";
+import { UseAuthContext } from "../context/AuthContext";
 const TopBar = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { logOut, isFormLoading } = UseAuthContext();
   return (
     <>
       <div className="px-4 py-3 flex flex-row items-center gap-3 justify-between mb-4 w-full page lg:hidden">
@@ -24,7 +26,9 @@ const TopBar = () => {
             )}
           </button>
           <button
+            disabled={isFormLoading}
             type="button"
+            onClick={() => logOut()}
             className="block w-fit  hover:text-pink transition"
           >
             <TbLogout2 size={30} />
@@ -32,7 +36,7 @@ const TopBar = () => {
         </div>
       </div>
       {isVisible && (
-        <div className="fixed right-6 gap-0 border border-pink p-4 w-[70%] h-[60vh] page z-10 overflow-y-auto">
+        <div className="fixed right-6 gap-0 border border-pink p-4 w-[60%]  h-[60vh] page z-10 overflow-y-auto">
           <h4 className="text-white text-lg font-semibold">Your Chats</h4>
           <Chats />
         </div>

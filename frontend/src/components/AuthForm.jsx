@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { UseAuthContext } from "../context/AuthContext";
 // eslint-disable-next-line react/prop-types
 const AuthForm = ({ isRegister }) => {
   const [isVisible, setIsVisible] = useState(false);
+
+  const { signUp, logIn, isFormLoading } = UseAuthContext();
   const {
     register,
     handleSubmit,
@@ -11,7 +14,17 @@ const AuthForm = ({ isRegister }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    if (isRegister) {
+      signUp(
+        data.username,
+        data.fullName,
+        data.email,
+        data.password,
+        data.gender
+      );
+    } else {
+      logIn(data.email, data.password);
+    }
   };
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -169,8 +182,10 @@ const AuthForm = ({ isRegister }) => {
           )}
         </div>
       )}
-      <button className="main-btn" type="submit">
-        {isRegister ? "Create Account" : "Sign In"}
+      <button disabled={isFormLoading} className={"main-btn"} type="submit">
+        {isRegister && !isFormLoading && "Create Account"}
+        {!isRegister && !isFormLoading && "Sign In"}
+        {isFormLoading && "Wait a second..."}
       </button>
     </form>
   );

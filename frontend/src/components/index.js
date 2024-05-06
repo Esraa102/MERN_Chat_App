@@ -8,6 +8,7 @@ import Chats from "./Chats";
 import Messages from "./Messages";
 import Message from "./Message";
 import TopBar from "./TopBar";
+import Loader from "./Loader";
 export {
   AuthForm,
   Sidebar,
@@ -19,4 +20,5 @@ export {
   Messages,
   Message,
   TopBar,
+  Loader,
 };

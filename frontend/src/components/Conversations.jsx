@@ -16,7 +16,7 @@ const NoChatSelected = () => {
 const Conversations = () => {
   const noChatsSelected = false;
   return (
-    <div className="flex-1 h-[70vh] lg:h-full lg:border-l lg:border-l-pink">
+    <div className="flex-1 h-[60%] lg:h-full lg:border-l lg:border-l-pink">
       {!noChatsSelected ? (
         <>
           {/* Header */}

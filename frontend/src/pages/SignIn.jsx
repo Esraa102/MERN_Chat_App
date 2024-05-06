@@ -1,6 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { AuthForm } from "../components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UseAuthContext } from "../context/AuthContext";
+import { useEffect } from "react";
 const SignIn = () => {
+  const context = UseAuthContext();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (context?.isAuthorized) {
+      navigate("/");
+    }
+  }, [context.isAuthorized]);
   return (
     <div className="page">
       <h1 className="text-2xl text-pink md:text-3xl text-center  font-bold mb-4">
