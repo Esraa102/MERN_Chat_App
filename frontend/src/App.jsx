@@ -4,8 +4,8 @@ import { UseAuthContext } from "./context/AuthContext";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  const { isAuthorized, user, isLoading } = UseAuthContext();
-  if (isLoading) return null;
+  const { isAuthorized, user } = UseAuthContext();
+
   return (
     <div className="p-4 min-h-screen w-screen py-4 lg:py-8 bg-background flex flex-col items-center justify-center">
       <Routes>

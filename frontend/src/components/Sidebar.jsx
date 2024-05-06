@@ -15,7 +15,9 @@ const Sidebar = () => {
         disabled={isFormLoading}
         onClick={() => logOut()}
         type="button"
-        className="block w-fit  hover:text-pink transition"
+        className={`block w-fit  hover:text-pink transition ${
+          isFormLoading && "opacity-50 cursor-not-allowed"
+        }`}
       >
         <TbLogout2 size={30} />
       </button>

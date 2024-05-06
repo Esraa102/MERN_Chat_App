@@ -27,6 +27,9 @@ export const AuthContextProvider = ({ children }) => {
         if (data.status === "OK") {
           setIsAuthorized(true);
           setUser(data.userData);
+        } else {
+          setIsAuthorized(false);
+          setUser(null);
         }
       } catch (error) {
         console.log(error);

@@ -10,7 +10,7 @@ const SignIn = () => {
     if (context?.isAuthorized) {
       navigate("/");
     }
-  }, [context.isAuthorized]);
+  }, [context?.isAuthorized]);
   return (
     <div className="page">
       <h1 className="text-2xl text-pink md:text-3xl text-center  font-bold mb-4">
