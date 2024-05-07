@@ -1,9 +1,11 @@
 import { Conversation } from "../models/conversation.model.js";
 import { Message } from "../models/message.model.js";
-
+import { getReceiverSocketId, io } from "../socket/socket.js";
 const sendMessage = async (req, res, next) => {
   const { _id: senderId } = req.user;
   const { receiverId } = req.params;
+  console.log("recieverId", receiverId);
+  console.log("senderId", senderId);
   const { message } = req.body;
   try {
     let conversation = await Conversation.findOne({
@@ -24,8 +26,12 @@ const sendMessage = async (req, res, next) => {
     if (newMessage) {
       conversation.messages.push(newMessage._id);
     }
-    // SOKET IO FUNCTONALITY WILL BE HERE
     await conversation.save();
+    // SOKET IO FUNCTONALITY WILL BE HERE
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
     res.status(201).json({ status: "OK", messageData: newMessage });
   } catch (error) {
     return res.status(500).json({ status: "Error", message: error.message });

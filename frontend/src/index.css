@@ -17,6 +17,13 @@ body {
     @apply p-4 rounded-md  bg-white  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-0 
     hover:bg-opacity-[0.03]  w-full md:w-1/2  mx-auto flex  flex-col gap-4;
   }
+  .navbar {
+    @apply lg:w-[28%] lg:items-start px-4 lg:py-5 lg:flex-col lg:gap-4 justify-between 
+   py-3 flex flex-row items-center gap-3   w-full page;
+  }
+  .chats-container {
+    @apply lg:h-[90%] w-full hidden lg:block    mt-4 overflow-y-auto;
+  }
   .form {
     @apply flex flex-col gap-2 mt-2;
   }

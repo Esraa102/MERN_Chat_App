@@ -5,8 +5,9 @@ import useConversation from "../zustand/useConversations";
 const Message = ({ message }) => {
   const { selectedConversation } = useConversation();
   const { user } = UseAuthContext();
-  const amISender = user?._id === message.senderId;
-
+  console.log(user, message);
+  const amISender = message.senderId === user?._id;
+  console.log(amISender);
   return (
     <>
       <div className={`chat ${amISender ? "chat-end" : "chat-start"}`}>

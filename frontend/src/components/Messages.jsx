@@ -1,31 +1,10 @@
-import { useEffect, useState } from "react";
 import { Loader, Message } from ".";
-import useConversation from "../zustand/useConversations";
-import toast from "react-hot-toast";
-import { getAllMessages } from "../helpers/api-communicators";
+import useGetMessages from "../hooks/useGetMessages";
+import useListenMessages from "../hooks/useListenMessages";
 
 const Messages = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const { messages, setMessages, selectedConversation } = useConversation();
-  useEffect(() => {
-    async function getMessages() {
-      setIsLoading(true);
-      try {
-        const data = await getAllMessages(selectedConversation._id);
-        if (data.status === "OK") {
-          setMessages(data.messages);
-        } else {
-          toast.error(data.message);
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    if (selectedConversation?._id) getMessages();
-  }, [selectedConversation?._id, setMessages]);
+  const { isLoading, messages } = useGetMessages();
+  useListenMessages();
   return (
     <div className="h-full p-4">
       {isLoading && <Loader miniLoader={true} />}

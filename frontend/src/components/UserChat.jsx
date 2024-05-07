@@ -8,7 +8,6 @@ const UserChat = ({ chat, index }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   const isSelected = chat._id === selectedConversation?._id;
   const isOnline = onlineUsers.includes(chat._id);
-  console.log(isOnline);
   return (
     <div
       onClick={() => setSelectedConversation(chat)}

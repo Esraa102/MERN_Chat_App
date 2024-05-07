@@ -16,7 +16,7 @@ const SendMessage = () => {
     }
     setIsLoading(true);
     try {
-      const data = await sendMessage(selectedConversation._id, content);
+      const data = await sendMessage(selectedConversation?._id, content);
       if (data.status === "OK") {
         setMessages([...messages, data.messageData]);
         setContent("");
