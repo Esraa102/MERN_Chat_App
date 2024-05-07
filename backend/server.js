@@ -2,14 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
+import { app, server } from "./socket/socket.js";
 import cookieParser from "cookie-parser";
 import { connectToDB } from "./config/connectToDB.js";
 import { authRouter } from "./routes/auth.route.js";
 import { messageRouter } from "./routes/message.route.js";
 import { conversationRouter } from "./routes/conversation.route.js";
 import { userRouter } from "./routes/user.route.js";
-
-const app = express();
 
 const port = process.env.PORT || 5001;
 connectToDB();
@@ -20,7 +19,7 @@ app.use(cookieParser(process.env.JWT_SECRET_TOKEN));
 app.use(
   cors({
     origin: "http://localhost:5173",
-    methods: ["POST", "PUT", "GET", "DELETE"],
+    methods: ["POST", "GET"],
     credentials: true,
   })
 );
@@ -31,6 +30,6 @@ app.use("/api/v1/messages", messageRouter);
 app.use("/api/v1/coversations", conversationRouter);
 app.use("/api/v1/users", userRouter);
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log("Server Is Running on", port);
 });
