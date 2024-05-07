@@ -38,7 +38,7 @@ const TopBar = () => {
         </div>
       </div>
       {isVisible && (
-        <div className="fixed right-6 gap-0 border border-pink p-4 w-[60%]  h-[60vh] page z-10 overflow-y-auto">
+        <div className="fixed block lg:hidden  right-6 gap-0 border border-pink p-4 w-[60%]  h-[60vh] page z-10 overflow-y-auto">
           <h4 className="text-white text-lg font-semibold">Your Chats</h4>
           <Chats />
         </div>
