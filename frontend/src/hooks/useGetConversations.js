@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { getUserChats } from "../helpers/api-communicators";
+import { UseAuthContext } from "../context/AuthContext";
 
 const useGetConversations = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [chats, setChats] = useState([]);
+  const context = UseAuthContext();
   useEffect(() => {
     const getConversations = async () => {
       setIsLoading(true);
@@ -23,7 +25,7 @@ const useGetConversations = () => {
       }
     };
     getConversations();
-  }, []);
+  }, [context?.user]);
   return { chats, isLoading };
 };
 

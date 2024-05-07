@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
 
+import { UseSocketContext } from "../context/SocketContext";
 import useConversation from "../zustand/useConversations";
 
 const UserChat = ({ chat, index }) => {
+  const { onlineUsers } = UseSocketContext();
   const { selectedConversation, setSelectedConversation } = useConversation();
   const isSelected = chat._id === selectedConversation?._id;
+  const isOnline = onlineUsers.includes(chat._id);
+  console.log(isOnline);
   return (
     <div
       onClick={() => setSelectedConversation(chat)}
@@ -13,7 +17,7 @@ const UserChat = ({ chat, index }) => {
         isSelected && "bg-[#001131]/70"
       }`}
     >
-      <div className="avatar online">
+      <div className={`avatar ${isOnline && "online"}`}>
         <div className="w-12 h-12 rounded-full ">
           <img
             src={chat.profileImg}
