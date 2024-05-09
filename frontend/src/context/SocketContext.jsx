@@ -11,17 +11,16 @@ export const SocketContextProvider = ({ children }) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   useEffect(() => {
     if (user) {
-      const socket = io("http://localhost:5000", {
+      const connection = io("http://localhost:5000", {
         query: {
           userId: user._id,
         },
       });
-      setSocket(socket);
-      socket.on("getOnlineUsers", (users) => {
+      setSocket(connection);
+      socket?.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
-
-      return () => socket.close();
+      return () => socket?.close();
     } else {
       if (socket) {
         socket.close();

@@ -27,6 +27,7 @@ const registerUser = async (req, res, next) => {
           .status(400)
           .json({ status: "Error", message: "Failed To Create New Account" });
       } else {
+        res.clearCookie("access_token", { httpOnley: true });
         const { password: encryptedPass, ...rest } = newUser._doc;
         const accessToken = createToken(newUser);
         return res
@@ -55,6 +56,7 @@ const logInUser = async (req, res, next) => {
         .json({ status: "Error", message: "User Is Unathorized" });
     } else {
       if (bcryptjs.compareSync(password, user.password)) {
+        res.clearCookie("access_token", { httpOnley: true });
         const { password: encryptedPass, ...rest } = user._doc;
         const accessToken = createToken(user);
         return res

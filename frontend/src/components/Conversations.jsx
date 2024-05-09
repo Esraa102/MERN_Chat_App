@@ -50,7 +50,7 @@ const Conversations = () => {
           </div>
           <div
             ref={messagesContainer}
-            className="overflow-y-auto h-[79%] lg:h-[78%]"
+            className="overflow-y-auto h-[70%] lg:h-[78%]"
           >
             <Messages />
           </div>

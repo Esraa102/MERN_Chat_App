@@ -36,7 +36,11 @@ const Sidebar = ({ isVisible, setIsVisible }) => {
               isFormLoading && "opacity-50 cursor-not-allowed"
             }`}
           >
-            <TbLogout2 size={30} />
+            {isFormLoading ? (
+              <span className="loading cursor-not-allowed loading-spinner loading-sm"></span>
+            ) : (
+              <TbLogout2 size={30} />
+            )}
           </button>
         </div>
       </div>

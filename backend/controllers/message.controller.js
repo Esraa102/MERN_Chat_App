@@ -4,8 +4,6 @@ import { getReceiverSocketId, io } from "../socket/socket.js";
 const sendMessage = async (req, res, next) => {
   const { _id: senderId } = req.user;
   const { receiverId } = req.params;
-  console.log("recieverId", receiverId);
-  console.log("senderId", senderId);
   const { message } = req.body;
   try {
     let conversation = await Conversation.findOne({
@@ -18,7 +16,7 @@ const sendMessage = async (req, res, next) => {
         participants: [senderId, receiverId],
       });
     }
-    const newMessage = await Message.create({
+    const newMessage = new Message({
       senderId,
       receiverId,
       message,
@@ -26,7 +24,7 @@ const sendMessage = async (req, res, next) => {
     if (newMessage) {
       conversation.messages.push(newMessage._id);
     }
-    await conversation.save();
+    await Promise.all([conversation.save(), newMessage.save()]);
     // SOKET IO FUNCTONALITY WILL BE HERE
     const receiverSocketId = getReceiverSocketId(receiverId);
     if (receiverSocketId) {

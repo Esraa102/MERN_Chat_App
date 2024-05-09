@@ -74,11 +74,7 @@ const logOutUser = async () => {
 
 const getUserChats = async () => {
   const res = await fetch(`${baseURL}/users`, {
-    method: "GET",
     credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
   });
   const data = await res.json();
   if (data.status === "OK") {
@@ -92,10 +88,10 @@ const getUserChats = async () => {
 const sendMessage = async (receiverId, message) => {
   const res = await fetch(`${baseURL}/messages/send/${receiverId}`, {
     method: "POST",
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify({ message }),
   });
   const data = await res.json();
@@ -109,11 +105,7 @@ const sendMessage = async (receiverId, message) => {
 
 const getAllMessages = async (id) => {
   const res = await fetch(`${baseURL}/messages/${id}`, {
-    method: "GET",
     credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
   });
   const data = await res.json();
   if (data.status === "OK") {

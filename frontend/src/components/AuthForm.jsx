@@ -182,10 +182,16 @@ const AuthForm = ({ isRegister }) => {
           )}
         </div>
       )}
-      <button disabled={isFormLoading} className={"main-btn"} type="submit">
+      <button
+        disabled={isFormLoading}
+        className={"main-btn flex items-center justify-center"}
+        type="submit"
+      >
         {isRegister && !isFormLoading && "Create Account"}
         {!isRegister && !isFormLoading && "Sign In"}
-        {isFormLoading && "Wait a second..."}
+        {isFormLoading && (
+          <span className="loading cursor-not-allowed loading-spinner loading-sm"></span>
+        )}
       </button>
     </form>
   );

@@ -25,11 +25,10 @@ export const AuthContextProvider = ({ children }) => {
       try {
         const data = await checkAuthStatus();
         if (data.status === "OK") {
-          setIsAuthorized(true);
           setUser(data.userData);
+          setIsAuthorized(true);
         } else {
-          setIsAuthorized(false);
-          setUser(null);
+          toast.error(data.message);
         }
       } catch (error) {
         console.log(error);
@@ -53,7 +52,7 @@ export const AuthContextProvider = ({ children }) => {
       if (data.status === "OK") {
         setUser(data.userData);
         setIsAuthorized(true);
-        toast.success("Account has been created successfully");
+        toast.success("Welcome to our website🤟😁");
         navigate("/");
       } else {
         setUser(null);
@@ -74,7 +73,7 @@ export const AuthContextProvider = ({ children }) => {
       if (data.status === "OK") {
         setUser(data.userData);
         setIsAuthorized(true);
-        toast.success("Logged In successfully");
+        toast.success("Hi Welcome Back👋!");
         navigate("/");
       } else {
         setUser(null);
@@ -97,7 +96,7 @@ export const AuthContextProvider = ({ children }) => {
       if (data.status === "OK") {
         setUser(null);
         setIsAuthorized(false);
-        toast.success(data.message);
+        toast.success("Sad to see you leave🥺💔");
         navigate("/sign-in");
       }
     } catch (error) {

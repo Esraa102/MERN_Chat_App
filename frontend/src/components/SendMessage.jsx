@@ -7,11 +7,10 @@ const SendMessage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [content, setContent] = useState("");
   const { selectedConversation, setMessages, messages } = useConversation();
-
   const handleSubmitMessage = async (e) => {
     e.preventDefault();
     if (!content.trim()) {
-      toast.error("Message can't be empty");
+      toast.error("Message can't be empty😐");
       return;
     }
     setIsLoading(true);
