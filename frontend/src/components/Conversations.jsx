@@ -38,7 +38,7 @@ const Conversations = () => {
   }, [setSelectedConversation]);
 
   return (
-    <div className="flex-1 h-full lg:border-l lg:border-l-pink">
+    <div className="flex-1 flex flex-col chat-container lg:h-full lg:border-l lg:border-l-pink">
       {selectedConversation !== null ? (
         <>
           {/* Header */}
@@ -50,11 +50,11 @@ const Conversations = () => {
           </div>
           <div
             ref={messagesContainer}
-            className="overflow-y-auto h-[70%] lg:h-[78%]"
+            className="overflow-y-auto flex-1 lg:h-[78%]"
           >
             <Messages />
           </div>
-          <div className="h-[12%] flex items-center">
+          <div className="py-4 flex items-center">
             <SendMessage />
           </div>
         </>

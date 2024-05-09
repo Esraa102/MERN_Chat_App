@@ -89,6 +89,9 @@ body {
     background-position: 0% 50%, 50% 50%, 100% 100%;
   }
 }
+.chat-container {
+  height: calc(100% - 64px);
+}
 
 /* SHAKE ANIMATION ON HORIZONTAL DIRECTION */
 .shake {
