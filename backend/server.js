@@ -18,7 +18,6 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.JWT_SECRET_TOKEN));
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.use(
   cors({
     origin: "https://mern-chat-app-c4jv.onrender.com",
@@ -26,12 +25,14 @@ app.use(
     credentials: true,
   })
 );
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 //Routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/messages", messageRouter);
 app.use("/api/v1/coversations", conversationRouter);
 app.use("/api/v1/users", userRouter);
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
