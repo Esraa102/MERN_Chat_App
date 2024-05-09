@@ -21,7 +21,7 @@ app.use(cookieParser(process.env.JWT_SECRET_TOKEN));
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://mern-chat-app-c4jv.onrender.com",
     methods: ["POST", "GET"],
     credentials: true,
   })

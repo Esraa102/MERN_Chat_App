@@ -8,7 +8,7 @@ const server = http.createServer(app);
 // build socket server on top of express server
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173"],
+    origin: ["https://mern-chat-app-c4jv.onrender.com"],
     methods: ["POST", "GET"],
   },
 });

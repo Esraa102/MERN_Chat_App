@@ -11,7 +11,7 @@ export const SocketContextProvider = ({ children }) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   useEffect(() => {
     if (user) {
-      const connection = io("http://localhost:5000", {
+      const connection = io("https://mern-chat-app-c4jv.onrender.com", {
         query: {
           userId: user._id,
         },

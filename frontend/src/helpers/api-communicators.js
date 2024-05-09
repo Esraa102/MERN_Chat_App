@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:5000/api/v1";
+const baseURL = "https://mern-chat-app-c4jv.onrender.com/api/v1";
 
 const registerUser = async (username, fullName, email, password, gender) => {
   const res = await fetch(`${baseURL}/auth/register`, {
